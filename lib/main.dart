@@ -1,10 +1,6 @@
-import 'package:booking_hotel/providers/user_provider.dart';
 import 'package:booking_hotel/screens/home_screens/home_screen.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter_config/flutter_config.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'firebase_options.dart';
-import 'screens/login_signup/login_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 void main() async {

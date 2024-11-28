@@ -151,7 +151,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
-import '../../providers/all_hotel_provider.dart';
 import '../../widgets/app_text.dart';
 import '../../widgets/custom_icon_button.dart';
 import '../../widgets/custom_nav_bar.dart';

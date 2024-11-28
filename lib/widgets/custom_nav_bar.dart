@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../gen/fonts.gen.dart';
-import '../screens/booking_screens/history_booking.dart';
 import '../screens/home_screens/home_screen.dart';
 import '../screens/profile_screens/profile_screen.dart';
 
@@ -57,12 +55,12 @@ class CustomNavBar extends StatelessWidget {
               isSelected: index == 2,
               onTap: () {
                 print("BOOKING");
-                Navigator.pushReplacement(
-                  context, 
-                  MaterialPageRoute(
-                    builder: (context) =>const BookingScreen(),
-                  ),
-                );
+                // Navigator.pushReplacement(
+                //   context, 
+                //   MaterialPageRoute(
+                //     builder: (context) =>const BookingScreen(),
+                //   ),
+                // );
               },
             ),
             _NavBarIcon(

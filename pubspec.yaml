@@ -81,7 +81,7 @@ flutter:
     - assets/images/
     - assets/icon/
     - assets/icon/amenities/
-    - lib/models/model.json
+    # - lib/models/model.json
     # - lib/screens/previewhotel/model.json
 
     - assets/images/hotel1/
