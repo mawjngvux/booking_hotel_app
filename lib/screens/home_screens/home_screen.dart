@@ -147,14 +147,17 @@
 // }
 
 import 'dart:typed_data';
+import 'package:booking_hotel/models/hotel_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
+import '../../providers/all_hotel_provider.dart';
 import '../../widgets/app_text.dart';
 import '../../widgets/custom_icon_button.dart';
 import '../../widgets/custom_nav_bar.dart';
 import '../../widgets/custom_text_field.dart';
+import '../../widgets/hotel_card.dart';
 import '../profile_screens/image_manager.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -183,7 +186,7 @@ class HomeScreen extends StatelessWidget {
                     _HeaderSection(),
                     _SearchCard(),
                     SizedBox(height: 20),
-                    // _NearbyHotels(),
+                    _NearbyHotels(),
                   ],
                 ),
               ),
@@ -312,7 +315,7 @@ class _NearbyHotels extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // final hotels = ref.watch(allHotelsProvider);
+    final hotels = ref.watch(allHotelsProvider);
     return Column(
       children: [
         const Row(
@@ -334,20 +337,20 @@ class _NearbyHotels extends ConsumerWidget {
             ),
           ],
         ),
-        // hotels.when(
-        //   data:(hotels) {
-        //     return ListView.builder(
-        //       shrinkWrap: true,
-        //       physics: const NeverScrollableScrollPhysics(),
-        //       itemCount: hotels.length,
-        //       itemBuilder: (context, index) {
-        //         return HotelCard(hotel: hotels[index]);
-        //       },
-        //     ); 
-        //   },
-        //   error: (error, stackTrace) => Text('Error: $error'),
-        //   loading: () => const Center(child: CircularProgressIndicator()), 
-        // ),
+        hotels.when(
+          data:(hotels) {
+            return ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: hotels.length,
+              itemBuilder: (context, index) {
+                return HotelCard(hotel: hotels[index]);
+              },
+            ); 
+          },
+          error: (error, stackTrace) => Text('Error: $error'),
+          loading: () => const Center(child: CircularProgressIndicator()), 
+        ),
       ],
     );
   }
