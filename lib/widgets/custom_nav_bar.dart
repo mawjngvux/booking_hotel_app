@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../gen/fonts.gen.dart';
+import '../models/hotel_model.dart';
 import '../screens/booking_screens/history_booking.dart';
 import '../screens/home_screens/home_screen.dart';
+import '../screens/map_screens/map_screen.dart';
 import '../screens/profile_screens/profile_screen.dart';
 
 class CustomNavBar extends StatelessWidget {
@@ -39,15 +41,14 @@ class CustomNavBar extends StatelessWidget {
               text: 'Map',
               isSelected: index == 1,
               onTap: () async {
-                print("MAP");
-                // List<HotelModel> hotels = await parseJson();
-                // Navigator.pushReplacement(
-                //   // ignore: use_build_context_synchronously
-                //   context, 
-                //   MaterialPageRoute(
-                //     builder: (context) =>WidgetMarkersScreen(hotels: hotels),
-                //   ),
-                // );
+                List<HotelModel> hotels = await parseJson();
+                Navigator.pushReplacement(
+                  // ignore: use_build_context_synchronously
+                  context, 
+                  MaterialPageRoute(
+                    builder: (context) =>WidgetMarkersScreen(hotels: hotels),
+                  ),
+                );
               },
             ),
             _NavBarIcon(
