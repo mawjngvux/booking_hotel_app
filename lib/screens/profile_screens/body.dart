@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../FeatureInProgress/featureIn_progress.dart';
 import 'log_out.dart';
 import 'profile_pic.dart';
+import 'my_account_screen.dart';
 
 class Body extends StatelessWidget {
   const Body({super.key});
@@ -16,11 +17,15 @@ class Body extends StatelessWidget {
           icon: Icons.person,
           text: 'My Account',
           press: () {
-            showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                return const FeatureInProgressWidget();
-              },
+            // showDialog(
+            //   context: context,
+            //   builder: (BuildContext context) {
+            //     return const FeatureInProgressWidget();
+            //   },
+            // );
+            Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const MyAccountScreen()),
             );
           },
         ),
@@ -29,12 +34,12 @@ class Body extends StatelessWidget {
           icon: Icons.notifications,
           text: 'Notifications',
           press: () {
-            showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                return const FeatureInProgressWidget();
-              },
-            );
+            // showDialog(
+            //   context: context,
+            //   builder: (BuildContext context) {
+            //     return const FeatureInProgressWidget();
+            //   },
+            // );
           },
         ),
         const SizedBox(height: 20),
@@ -42,12 +47,12 @@ class Body extends StatelessWidget {
           icon: Icons.settings,
           text: 'Settings',
           press: () {
-            showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                return const FeatureInProgressWidget();
-              },
-            );
+            // showDialog(
+            //   context: context,
+            //   builder: (BuildContext context) {
+            //     return const FeatureInProgressWidget();
+            //   },
+            // );
           },
         ),
         const SizedBox(height: 20),
@@ -55,12 +60,12 @@ class Body extends StatelessWidget {
           icon: Icons.help_outline,
           text: 'Help Center',
           press: () {
-            showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                return const FeatureInProgressWidget();
-              },
-            );
+            // showDialog(
+            //   context: context,
+            //   builder: (BuildContext context) {
+            //     return const FeatureInProgressWidget();
+            //   },
+            // );
           },
         ),
         const SizedBox(height: 20),
