@@ -209,18 +209,24 @@ class _LoginScreenState extends State<LoginScreen>{
                   email: _emailTextController.text,
                   password: _passwordTextController.text,
                 );
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeScreen()),);
-            } on FirebaseAuthException catch (e) {
+                    // Lưu email vào SharedPreferences
+                SharedPreferences prefs = await SharedPreferences.getInstance();
+                await prefs.setString('userEmail', _emailTextController.text);
+
+                // Điều hướng sang HomeScreen
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HomeScreen()),
+                );
+              } on FirebaseAuthException catch (e) {
                 if (e.code == 'user-not-found') {
-                  // ignore: avoid_print
                   print('No user found for that email.');
                 } else if (e.code == 'wrong-password') {
-                  // ignore: avoid_print
                   print('Wrong password provided for that user.');
                 }
               }
-          }
-        },
+            }
+          },
         child: const Text(
           'LOGIN',
           style: TextStyle(
