@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
+import '../home_screens/home_screen.dart';
+
 class LoginFacebook extends StatefulWidget {
   const LoginFacebook({super.key});
 
@@ -14,10 +16,10 @@ class _LoginFacebookState extends State<LoginFacebook> {
 
 Future<UserCredential> signInWithFacebook() async {
   final LoginResult loginResult = await FacebookAuth.instance.login();
-  final OAuthCredential facebookAuthCredential = FacebookAuthProvider.credential('${loginResult.accessToken?.tokenString}');
+  final OAuthCredential facebookAuthCredential = FacebookAuthProvider.credential(loginResult.accessToken!.tokenString);
   return FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
 }
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,7 +57,22 @@ Future<UserCredential> signInWithFacebook() async {
                 ],
               ),
               onPressed: () async {
-               signInWithFacebook();
+                try {
+                  final UserCredential? userCredential =
+                      await signInWithFacebook();
+                  if (userCredential != null) {
+                    Navigator.pushReplacement(
+                      // ignore: use_build_context_synchronously
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const HomeScreen()),
+                    );
+                  } else {
+                    print('Sign in failed');
+                  }
+                } catch (e) {
+                  print('Error signing in with Google: $e');
+                }
               },
             ),
           ]
