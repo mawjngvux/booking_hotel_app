@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../FeatureInProgress/featureIn_progress.dart';
 import 'log_out.dart';
+import 'my_account_screen.dart';
 import 'profile_pic.dart';
 
 class Body extends StatelessWidget {
@@ -16,11 +17,15 @@ class Body extends StatelessWidget {
           icon: Icons.person,
           text: 'My Account',
           press: () {
-            showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                return const FeatureInProgressWidget();
-              },
+            // showDialog(
+            //   context: context,
+            //   builder: (BuildContext context) {
+            //     return const FeatureInProgressWidget();
+            //   },
+            // );
+            Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const MyAccountScreen()),
             );
           },
         ),
